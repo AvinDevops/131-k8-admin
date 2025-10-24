@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::411162217407:role/eksctl-expense-nodegroup-expense-NodeInstanceRole-NzKfPEeml5yl
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    - groups:
+      - expense-pod-reader
+      userarn: arn:aws:iam::411162217407:user/avinash
+      username: avinash
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-10-24T14:31:05Z"
+  name: aws-auth
+  namespace: kube-system
+  uid: 924da4a4-c608-4155-b6dc-77f2fba9f4a0
